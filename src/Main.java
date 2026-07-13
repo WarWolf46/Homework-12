@@ -1,13 +1,29 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
+    public static void main(String[] args) {
+        // Создаем авторов
+        Author firstAuthor = new Author("Аркадий и Борис", "Стругацкие");
+        Author secondAuthor = new Author("Том", "Клэнси");
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+        // Создаем книги
+        Book firstBook = new Book("Пикник на обочине", firstAuthor, 1971);
+        Book secondBook = new Book("Red Rabbit", secondAuthor, 2002);
+
+        // Выводим информацию о книгах
+        printBookInfo(firstBook);
+        printBookInfo(secondBook);
+
+        // Изменяем год публикации одной из книг
+        firstBook.setPublicationYear(1972);
+
+        // Выводим обновленную информацию
+        System.out.println("\nПосле изменения года публикации:");
+        printBookInfo(firstBook);
+    }
+
+    public static void printBookInfo(Book book) {
+        System.out.println("Название: " + book.getTitle());
+        System.out.println("Автор: " + book.getAuthor().getFirstName() + " " + book.getAuthor().getLastName());
+        System.out.println("Год публикации: " + book.getPublicationYear());
+        System.out.println();
     }
 }
